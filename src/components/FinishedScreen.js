@@ -1,4 +1,6 @@
-function FinishedScreen({ totalPoints, maxPossiblePoints, highscore }) {
+import NextButton from './NextButton';
+
+function FinishedScreen({ totalPoints, maxPossiblePoints, highscore, status }) {
   const percentage = (totalPoints / maxPossiblePoints) * 100;
 
   let emoji;
