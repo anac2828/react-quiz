@@ -33,15 +33,15 @@ function NextButton() {
       </div>
     );
 
-  // RESTART BUTTON
-  if (status === 'finished')
-    return (
-      <div>
-        <button className='btn' onClick={() => restartQuiz()}>
-          Restart Quiz
-        </button>
-      </div>
-    );
+  // // RESTART BUTTON
+  // if (status === 'finished')
+  //   return (
+  //     <div>
+  //       <button className='btn' onClick={() => restartQuiz()}>
+  //         Restart Quiz
+  //       </button>
+  //     </div>
+  //   );
 }
 
 export default NextButton;

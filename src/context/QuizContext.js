@@ -122,6 +122,7 @@ function QuizProvider({ children }) {
   }
 
   function restartQuiz() {
+    console.log('test');
     dispatch({ type: 'restart' });
   }
 
