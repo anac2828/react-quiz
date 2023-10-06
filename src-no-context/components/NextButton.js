@@ -1,15 +1,4 @@
-import { useQuiz } from '../context/QuizContext';
-
-function NextButton() {
-  const {
-    answer,
-    index,
-    numQuestions,
-    status,
-    displayNextQuestion,
-    quizFinished,
-    restartQuiz,
-  } = useQuiz();
+function NextButton({ dispatch, answer, index, numQuestions, status }) {
   // The button will not render when no questions have been answered
   if (answer === null) return null;
 
@@ -17,7 +6,9 @@ function NextButton() {
   if (index < numQuestions - 1)
     return (
       <div>
-        <button className='btn btn-ui' onClick={() => displayNextQuestion()}>
+        <button
+          className='btn btn-ui'
+          onClick={() => dispatch({ type: 'nextQuestion' })}>
           Next
         </button>
       </div>
@@ -27,7 +18,9 @@ function NextButton() {
   if (index === numQuestions - 1)
     return (
       <div>
-        <button className='btn btn-ui' onClick={() => quizFinished()}>
+        <button
+          className='btn btn-ui'
+          onClick={() => dispatch({ type: 'finished' })}>
           Finished
         </button>
       </div>
@@ -37,7 +30,7 @@ function NextButton() {
   if (status === 'finished')
     return (
       <div>
-        <button className='btn' onClick={() => restartQuiz()}>
+        <button className='btn' onClick={() => dispatch({ type: 'restart' })}>
           Restart Quiz
         </button>
       </div>

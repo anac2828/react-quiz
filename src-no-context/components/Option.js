@@ -1,9 +1,6 @@
-import { useQuiz } from '../context/QuizContext';
-
 // Will be render in the Questions component
-function Option() {
-  const { answer, question, selectedAnswer } = useQuiz();
-  // when the button is clicked the answer will not be nulled and the  button will be disabled and correct styles applyed
+function Option({ question, dispatch, answer }) {
+  // when the button is clicked the answer will not be nulled and the button will be disabled and correct styles applyed
   const hasAnswered = answer !== null;
   return (
     <div className='options'>
@@ -19,7 +16,7 @@ function Option() {
                 : 'wrong'
               : ''
           }`}
-          onClick={() => selectedAnswer(index)}>
+          onClick={() => dispatch({ type: 'newAnswer', payload: index })}>
           {option}
         </button>
       ))}
