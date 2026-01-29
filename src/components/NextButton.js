@@ -1,19 +1,17 @@
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../context/QuizContext'
 
 function NextButton() {
   const {
-    answer,
+    userSelectedAnswer,
     index,
     numQuestions,
-    status,
     displayNextQuestion,
     quizFinished,
-    restartQuiz,
-  } = useQuiz();
+  } = useQuiz()
   // The button will not render when no questions have been answered
-  if (answer === null) return null;
+  if (userSelectedAnswer === null) return null
 
-  // NEXT BUTTON
+  // Display NEXT BUTTON if it is not the last question
   if (index < numQuestions - 1)
     return (
       <div>
@@ -21,9 +19,9 @@ function NextButton() {
           Next
         </button>
       </div>
-    );
+    )
 
-  // FINISHED BUTTON
+  // FINISHED BUTTON on the last question
   if (index === numQuestions - 1)
     return (
       <div>
@@ -31,7 +29,7 @@ function NextButton() {
           Finished
         </button>
       </div>
-    );
+    )
 
   // // RESTART BUTTON
   // if (status === 'finished')
@@ -44,4 +42,4 @@ function NextButton() {
   //   );
 }
 
-export default NextButton;
+export default NextButton

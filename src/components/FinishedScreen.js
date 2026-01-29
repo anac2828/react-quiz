@@ -1,16 +1,17 @@
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../context/QuizContext'
 
+// Displays when status is 'finished'
 function FinishedScreen() {
-  const { totalPoints, maxPossiblePoints, highscore, restartQuiz } = useQuiz();
-  const percentage = (totalPoints / maxPossiblePoints) * 100;
+  const { totalPoints, maxPossiblePoints, highscore, restartQuiz } = useQuiz()
+  const percentage = (totalPoints / maxPossiblePoints) * 100
 
-  let emoji;
+  let emoji
 
-  if (percentage === 100) emoji = '🥇';
-  if (percentage >= 80 && percentage < 100) emoji = '🥈';
-  if (percentage >= 50 && percentage < 80) emoji = '🥉';
-  if (percentage >= 0 && percentage < 50) emoji = '🙁';
-  if (percentage === 0) emoji = '🤦‍♂️';
+  if (percentage === 100) emoji = '🥇'
+  if (percentage >= 80 && percentage < 100) emoji = '🥈'
+  if (percentage >= 50 && percentage < 80) emoji = '🥉'
+  if (percentage >= 0 && percentage < 50) emoji = '🙁'
+  if (percentage === 0) emoji = '🤦‍♂️'
 
   return (
     <>
@@ -21,13 +22,14 @@ function FinishedScreen() {
         </strong>
       </p>
       <p className='highscore'>(Highscore: {highscore})</p>
+      {/* RESTART BUTTON */}
       <div>
         <button className='btn' onClick={() => restartQuiz()}>
           Restart Quiz
         </button>
       </div>
     </>
-  );
+  )
 }
 
-export default FinishedScreen;
+export default FinishedScreen

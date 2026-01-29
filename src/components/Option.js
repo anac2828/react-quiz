@@ -1,30 +1,35 @@
-import { useQuiz } from '../context/QuizContext';
+import { useQuiz } from '../context/QuizContext'
 
 // Will be render in the Questions component
 function Option() {
-  const { answer, question, selectedAnswer } = useQuiz();
-  // when the button is clicked the answer will not be nulled and the  button will be disabled and correct styles applyed
-  const hasAnswered = answer !== null;
+  // userSelectedAnswer holds the index of the selected answer or null if none selected
+  const { userSelectedAnswer, question, selectedAnswer } = useQuiz()
+  // Check if an answer has been selected and disabled buttons if so. 'null' means no answer selected
+  const hasSelectedAnswer = userSelectedAnswer !== null
+
   return (
+    // Mapping through the options (possible answers) array to create buttons for each option
     <div className='options'>
       {question.options.map((option, index) => (
         <button
-          disabled={hasAnswered}
+          disabled={hasSelectedAnswer}
           key={option}
-          // First ternary applies the answer class when the button is clicked. Second applies the classes if the answer is correct.
-          className={`btn btn-option ${index === answer ? 'answer' : ''} ${
-            hasAnswered
+          // If index matches userSelectedAnswer, we apply the 'answer' which indents the button
+          // If hasSelectedAnswer is true, we check if the index (option index) matches the correctOption index to apply correct(green)/wrong(yellow) classes
+          className={`btn btn-option ${index === userSelectedAnswer ? 'answer' : ''} ${
+            hasSelectedAnswer
               ? index === question.correctOption
                 ? 'correct'
                 : 'wrong'
               : ''
           }`}
-          onClick={() => selectedAnswer(index)}>
+          onClick={() => selectedAnswer(index)}
+        >
           {option}
         </button>
       ))}
     </div>
-  );
+  )
 }
 
-export default Option;
+export default Option
