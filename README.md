@@ -1,6 +1,8 @@
+
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Project needs the data server to run on a local network.
 
 ## Available Scripts
 
